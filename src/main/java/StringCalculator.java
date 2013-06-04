@@ -25,19 +25,6 @@ public class StringCalculator {
                 String tempString = regex;
                 String[] getString = inputString.split("\\n");
                 inputString = getString[1];
-//                String temp = "";
-//                for (int j = 0 ; j< tempString.length(); j++) {
-//                    char t = tempString.charAt(j);
-//                    if ((t == '*') || (t == '?') || (t == '+') || (t =='[') || (t==']') || ( t== '(') || ( t==')')) {
-//                        temp += "\\" + t;
-//                    }
-//                    else {
-//                        temp += t;
-//                    }
-//                }
-//                regex = temp;
-
-                System.out.println(regex);
             }
             String[] inputNumbers = inputString.split(regex);
             for (String si : inputNumbers) {
@@ -47,7 +34,6 @@ public class StringCalculator {
                     continue;
                 }
                 if (ok) {
-                    //System.out.println(negativeNumbers);
                     throw new IllegalArgumentException("Negative is not allowed. " + negativeNumbers );
                 }
                 if ((!si.isEmpty()) && (!si.equals("[")) && (!si.equals("]"))) {
@@ -62,19 +48,6 @@ public class StringCalculator {
         }
     }
 
-    public String getDefineDelimiter(String inputString) {
-        String result = "";
-        String getPattern = "(//)(.*)(\\n)(.*)";
-        if (inputString.matches(getPattern)) {
-            //System.out.println("MATCH");
-            String[] preDefine = inputString.split("\\n");
-            String defineDelimiter = preDefine[0].substring(3,preDefine[0].length()-1);
-            System.out.println(defineDelimiter);
-            result = defineDelimiter;
-        }
-        return result;
-    }
-
     public String getMultiDefineDelimiter(String inputString) {
         String result = "";
         result += "[";
@@ -84,22 +57,17 @@ public class StringCalculator {
             String[] temp = inputString.split("\\n");
             String[] preDefine = temp[0].split("//");
             String tempDelimiter = preDefine[1];
-            System.out.println(tempDelimiter);
+//            System.out.println(tempDelimiter);
             String pattern = "(\\[)(.*)(\\])(.*)";
             if (tempDelimiter.matches(pattern)) {
-//                System.out.println("M");
                 tempDelimiter = tempDelimiter.replaceAll("\\["," ");
                 tempDelimiter = tempDelimiter.replaceAll("\\]"," ");
                 String[] delimiter = tempDelimiter.split(" ");
-                for (String di : delimiter) {
-                    System.out.println(di);
-                }
                 for (String di: delimiter) {
                     if (!di.isEmpty()) {
                         result += "(" + di + ")";
                     }
                 }
-
             }
             result += "]";
         }
