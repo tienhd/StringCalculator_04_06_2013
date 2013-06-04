@@ -16,13 +16,10 @@ public class StringCalculator {
             String regex = "[,;\\n//*#]";
             String negative = "-([\\d])(.*)";
             String define = "(//)(\\[)(.*)(\\])(\\n)(.*)";
-
             String negativeNumbers = "";
             boolean ok = false;
-
             if (inputString.matches(define)) {
                 regex = getMultiDefineDelimiter(inputString);
-                String tempString = regex;
                 String[] getString = inputString.split("\\n");
                 inputString = getString[1];
             }
@@ -53,11 +50,9 @@ public class StringCalculator {
         result += "[";
         String getPattern = "(//)(.*)(\\n)(.*)";
         if (inputString.matches(getPattern)) {
-//            System.out.println("MATCH MULTI");
             String[] temp = inputString.split("\\n");
             String[] preDefine = temp[0].split("//");
             String tempDelimiter = preDefine[1];
-//            System.out.println(tempDelimiter);
             String pattern = "(\\[)(.*)(\\])(.*)";
             if (tempDelimiter.matches(pattern)) {
                 tempDelimiter = tempDelimiter.replaceAll("\\["," ");
