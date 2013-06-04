@@ -21,21 +21,21 @@ public class StringCalculator {
             boolean ok = false;
 
             if (inputString.matches(define)) {
-                regex = getDefineDelimiter(inputString);
+                regex = getMultiDefineDelimiter(inputString);
                 String tempString = regex;
                 String[] getString = inputString.split("\\n");
                 inputString = getString[1];
-                String temp = "";
-                for (int j = 0 ; j< tempString.length(); j++) {
-                    char t = tempString.charAt(j);
-                    if ((t == '*') || (t == '?') || (t == '+') || (t =='[') || (t==']') || ( t== '(') || ( t==')')) {
-                        temp += "\\" + t;
-                    }
-                    else {
-                        temp += t;
-                    }
-                }
-                regex = temp;
+//                String temp = "";
+//                for (int j = 0 ; j< tempString.length(); j++) {
+//                    char t = tempString.charAt(j);
+//                    if ((t == '*') || (t == '?') || (t == '+') || (t =='[') || (t==']') || ( t== '(') || ( t==')')) {
+//                        temp += "\\" + t;
+//                    }
+//                    else {
+//                        temp += t;
+//                    }
+//                }
+//                regex = temp;
 
                 System.out.println(regex);
             }
